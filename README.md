@@ -1,5 +1,7 @@
 Titel: 	DataSync
+
 Uddannelse: 	Datamatikeruddannelsen v/ Erhvervsakadami Aarhus
+
 Niveauangivelse:	Hovedopgave
 
 Synops:
