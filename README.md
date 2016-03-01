@@ -1,4 +1,4 @@
-Titel: 	DataSync
+#	DataSync
 
 Uddannelse: 	Datamatikeruddannelsen v/ Erhvervsakadami Aarhus
 
