@@ -1,0 +1,3 @@
+﻿2015-09-23 11:21:17,246 [7] INFO  umbraco.BusinessLogic.Log - [Thread 120] Log scrubbed.  Removed all items older than 2015-07-25 11:21:17
+2015-09-23 15:21:17,166 [7] INFO  umbraco.BusinessLogic.Log - [Thread 12] Log scrubbed.  Removed all items older than 2015-07-25 15:21:17
+2015-09-23 21:32:12,570 [7] INFO  umbraco.BusinessLogic.Log - [Thread 16] Log scrubbed.  Removed all items older than 2015-07-25 21:32:12

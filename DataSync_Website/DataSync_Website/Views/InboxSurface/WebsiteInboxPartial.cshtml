@@ -1,0 +1,87 @@
+﻿@model DataSync_Website.Models.UserViewModel
+@TempData["Result"]
+<div class="table table-striped">
+    @using (Html.BeginUmbracoForm("WebsiteInbox", "InboxSurface", FormMethod.Post, new { id = "inboxform" }))
+    {
+        <table class="table table-striped well">
+            <thead >
+                <tr style="background-color: #aaaaaa">
+                    <th><input type="checkbox" onchange="ToggleCheckbox(this)" /></th>
+                    <th class="hidden-xs">Dato</th>
+                    <th>Subject</th>
+                    <th class="hidden-sm hidden-xs">Message</th>
+                </tr>
+            </thead>
+            @if (Model.WebSiteInboxList.Count(x => x.IsRead == false) != 0)
+            {
+                foreach (var message in Model.WebSiteInboxList.Where(x => x.IsRead == false).ToList())
+                {
+                    <tr>
+                        <td>
+                            @Html.CheckBox("messageCheckBox", false, new { onclick = "ActivateButtons();" })
+                            @Html.Hidden("messageId", message.Id)
+                        </td>
+                        <td class="hidden-xs">@message.DateCreated.ToString("dd/MM/yyyy")</td>
+                        <td>@message.Subject</td>
+                        <td class="hidden-sm hidden-xs">@Html.Raw(umbraco.library.ReplaceLineBreaks(message.Message))</td>
+                    </tr>
+                }
+            }
+            @if (Model.WebSiteInboxList.Count(x => x.IsRead == true) != 0)
+            {
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+                <tbody>
+                    
+                    <tr style="background-color: #aaaaaa">
+                        <th></th>
+                        <th class="hidden-xs">Dato</th>
+                        <th>Subject</th>
+                        <th class="hidden-sm hidden-xs">Message (læste beskeder)</th>
+                    </tr>
+                </tbody>
+                
+                foreach (var message in Model.WebSiteInboxList.Where(x => x.IsRead == true).ToList())
+                {
+                    <tr>
+                        <td>
+                            @Html.CheckBox("messageCheckBox", false, new { onclick = "ActivateButtons();" })
+                            @Html.Hidden("messageId", message.Id)
+                        </td>
+                        <td class="hidden-xs">@message.DateCreated.ToString("dd/MM/yyyy")</td>
+                        <td>@message.Subject</td>
+                        <td class="hidden-sm hidden-xs">@Html.Raw(umbraco.library.ReplaceLineBreaks(message.Message))</td>
+                    </tr>
+                }
+            }
+        </table>
+        <div>
+            <input value="Marker som læst" type="button" id="markasread" onclick="SubmitInboxform(this)" class="btn btn-default" disabled="disabled" />
+            <input value="Marker som ulæst" type="button" id="markasunread" onclick="SubmitInboxform(this)" class="btn btn-default" disabled="disabled" />
+            <input value="Slet besked(er)" type="button" id="delmessage" onclick="SubmitInboxform(this)" class="btn btn-default" disabled="disabled" />
+            <input type="hidden" name="SubmitParameter" id="SubmitParameter" />
+        </div>
+    }
+</div>
+<script>
+    function ToggleCheckbox(source) {
+        var checkboxes = document.getElementsByName('messageCheckBox');
+        for (var i = 0, n = checkboxes.length; i < n; i++) {
+            checkboxes[i].checked = source.checked;
+            ActivateButtons();
+        }
+    }
+    function ActivateButtons() {
+        var found = false;
+        var checkboxes = document.getElementsByName('messageCheckBox');
+        for (var i = 0, n = checkboxes.length; i < n; i++)
+            if (checkboxes[i].checked === true) found = true;
+        document.getElementById('markasread').disabled = !found;
+        document.getElementById('markasunread').disabled = !found;
+        document.getElementById('delmessage').disabled = !found;
+    }
+    function SubmitInboxform(source) {
+        $("#SubmitParameter").val(source.id); $("#inboxform").submit();
+    }
+</script>

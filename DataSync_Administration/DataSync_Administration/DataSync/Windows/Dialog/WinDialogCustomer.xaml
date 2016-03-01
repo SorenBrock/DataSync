@@ -1,0 +1,122 @@
+﻿<Window x:Class="DataSync.Windows.Dialog.WinDialogCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Customer" Height="494.478" Width="520" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="TextBox" x:Key="TxtStyle">
+            <Setter Property="Margin" Value="0,2,5,2"/>
+            <Setter Property="Height" Value="20"/>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnStyle">
+            <Setter Property="Margin" Value="5,0,5,0"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <TabControl>
+            <TabItem Name="MyTabItem1" Header="Generelt">
+                <StackPanel>
+                    <GroupBox Header="Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500">
+                        <Grid Height="150" VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Column="0" Grid.Row="0">Navn</Label>
+                            <Label Grid.Column="0" Grid.Row="1">Login:</Label>
+                            <Label Grid.Column="0" Grid.Row="2">Password:</Label>
+                            <Label Grid.Column="0" Grid.Row="3">Dato oprettet:</Label>
+                            <Label Grid.Column="0" Grid.Row="4">Dato opdateret:</Label>
+                            <Label Grid.Column="0" Grid.Row="5">Status:</Label>
+                            <TextBox Name="TextBoxName" Grid.Column="1" Grid.Row="0" Text="{Binding Path=Name, Mode=OneWay}" Style="{StaticResource TxtStyle}" />
+                            <TextBox Name="TextBoxWebLogin" Text="{Binding Path=WebLogin, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource TxtStyle}"/>
+                            <TextBox Name="TextBoxWebPassword" Grid.Column="1" Grid.Row="2" Text="{Binding Path=WebPassword, Mode=OneWay}" Style="{StaticResource TxtStyle}" />
+                            <TextBox Name="TextBoxDateCreated" Grid.Column="1" Grid.Row="3" Width="150" Text="{Binding Path=DateCreated, Mode=OneWay}" Style="{StaticResource TxtStyle}" HorizontalAlignment="Left" IsEnabled="False"/>
+                            <TextBox Name="TextBoxDateLastUpdated" Grid.Column="1" Grid.Row="4" Width="150" Text="{Binding Path=DateLastUpdated, Mode=OneWay}" Style="{StaticResource TxtStyle}" HorizontalAlignment="Left" IsEnabled="False"/>
+                            <TextBox Name="TextBoxCustomerStatus" Grid.Column="1" Grid.Row="5" Text="{Binding Path=IsActive, Mode=OneWay}" Width="100" Style="{StaticResource TxtStyle}" HorizontalAlignment="Left" IsEnabled="False"/>
+                            <Button Name="ButtonCustomerIsActive" Content="Enable"  Grid.Column="1" Grid.Row="5" Width="50" Height="20" HorizontalAlignment="Left" Margin="338,3,0,2" Click="ButtonCustomerIsActive_Click"></Button>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="VTiger" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500">
+                        <Grid Height="100" VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Column="0" Grid.Row="0">VTiger user</Label>
+                            <Label Grid.Column="0" Grid.Row="1">Url (x.x.x.x:xxxx)</Label>
+                            <Label Grid.Column="0" Grid.Row="2">AccessKey:</Label>
+                            <Label Grid.Column="0" Grid.Row="3">Status:</Label>
+                            <TextBox Name="TextBoxVTigerUsername" Grid.Column="1" Grid.Row="0" Text="{Binding Path=VTigerUsername, Mode=OneWay}" Style="{StaticResource TxtStyle}" />
+                            <TextBox Name="TextBoxVTigerUrl" Grid.Column="1" Grid.Row="1" Text="{Binding Path=VTigerUrl, Mode=OneWay}" Style="{StaticResource TxtStyle}" />
+                            <TextBox Name="TextBoxVTigerAccessKey" Text="{Binding Path=VTigerAccessKey, Mode=OneWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource TxtStyle}"/>
+                            <TextBox Name="TextBoxVTigerStatus" Grid.Column="1" Grid.Row="3" Text="{Binding Path=IsVTigerOK, Mode=OneWay}" Width="100" Style="{StaticResource TxtStyle}" HorizontalAlignment="Left" IsEnabled="False"/>
+                            <Button Name="ButtonCheckVTiger" Content="Check"  Grid.Column="1" Grid.Row="3" Width="50" Height="20" HorizontalAlignment="Right" Click="ButtonCheckVTiger_Click"></Button>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="E-conomic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500">
+                        <Grid Height="75" VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Column="0" Grid.Row="0">Public API ID:</Label>
+                            <Label Grid.Column="0" Grid.Row="1">Private API ID:</Label>
+                            <Label Grid.Column="0" Grid.Row="2">Status:</Label>
+                            <TextBox Name="TextBoxEconomicPublicAPI" Grid.Column="1" Grid.Row="0" Text="{Binding Path=EconomicPublicAPI, Mode=OneWay}" Style="{StaticResource TxtStyle}" />
+                            <TextBox Name="TextBoxEconomicPrivateAPI" Text="{Binding Path=EconomicPrivateAPI, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource TxtStyle}"/>
+                            <TextBox Name="TextBoxEconomicStatus" Grid.Column="1" Grid.Row="2" Text="{Binding Path=IsEconomicOK, Mode=OneWay}" Width="100" Style="{StaticResource TxtStyle}" HorizontalAlignment="Left" IsEnabled="False"/>
+                            <Button Name="ButtonCheckEconomic" Content="Check"  Grid.Column="1" Grid.Row="2" Width="50" Height="20" HorizontalAlignment="Left" Margin="338,2,0,3" Click="ButtonCheckEconomic_Click"></Button>
+                        </Grid>
+                    </GroupBox>
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right">
+                        <Button Name="ButtonCancel" Content="Cancel" Width="80" Margin="5,5,5,5" IsCancel="True"/>
+                        <Button Name="ButtonSave" Content="OK" Width="80" Margin="5,5,5,5" IsDefault="True" Click="ButtonSave_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Name="MyTabItem2" Header="E-conomic -> VTiger">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+                        <GroupBox HorizontalAlignment="Left" Header="Syncronisering" Width="500" Height="45">
+                            <Grid Height="25" VerticalAlignment="Top" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Name="ButtonProducter" Content="Overfør Produkter" Width="150"  Grid.Column="0" Grid.Row="0" Style="{StaticResource BtnStyle}" Click="ButtonProducter_Click"/>
+                                <Button Name="ButtonCustomer" Content="Overfør Kunder" Width="150" Grid.Column="1" Grid.Row="0" Style="{StaticResource BtnStyle}" Click="ButtonCustomer_Click" />
+                                <Button Name="ButtonCancelBackgroundWorker" Content="Cancel"  Grid.Column="2" Grid.Row="0" Style="{StaticResource BtnStyle}" HorizontalAlignment="Right" Click="ButtonCancelBackgroundWorker_Click" />
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox HorizontalAlignment="Left" Header="Log" Width="500" Height="380" Margin="1,0,0,0">
+                            <TextBox Name="TextBoxLog" Background="Black" Foreground="#83F52C" IsReadOnly="True"  TextWrapping="Wrap" VerticalScrollBarVisibility="Auto">Ready...</TextBox>
+                        </GroupBox>
+                    </StackPanel>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+    </StackPanel>
+</Window>

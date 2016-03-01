@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+}
+<div class="container">
+    <h2>@Umbraco.Field("pagetitle")</h2>
+    <div class="well">
+        <div class="row">
+            <div class="col-md-12">
+                @Umbraco.Field("bodytext")
+            </div>
+        </div>
+    </div>@if (!User.Identity.IsAuthenticated)
+          {
+              <div class="row">
+                  <div class="col-md-4">
+                      <h2>@Umbraco.Field("Guide1Headline")</h2>
+                      <p>@Umbraco.Field("Guide1BodyText")</p>
+                      <p><a type="button" href="/Login" class="btn btn-default">@Umbraco.Field("Guide1Headline")</a>
+                      </p>
+                  </div>
+              </div>
+          }
+</div>

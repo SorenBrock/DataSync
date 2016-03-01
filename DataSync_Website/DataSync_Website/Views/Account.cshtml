@@ -1,0 +1,48 @@
+﻿@inherits UmbracoViewPage<DataSync_Website.Models.UserViewModel>
+@{
+    Layout = "Master.cshtml";
+}
+<div class="container">
+    <h2>@Umbraco.Field("pagetitle")</h2>
+    <div class="well">
+        <div class="row">
+            <div class="col-md-12">
+                @Umbraco.Field("bodytext")
+                <div class="well">
+                        <dl class="dl-horizontal">
+                            <dt>Navn</dt>
+                            <dd>@Model.CustomerSet.Name</dd>
+                            <dt>Oprettet</dt>
+                            <dd>@Model.CustomerSet.DateCreated.Value.ToString("dd/MM-yyyy")</dd>
+                            <dt>Sidste opdatering</dt>
+                            <dd>@Model.CustomerSet.DateLastUpdated.Value.ToString("dd/MM-yyyy HH:mm:ss")</dd>
+                            <dt>Status</dt>
+                            <dd>@((bool)Model.CustomerSet.IsActive ? "AKTIVERET" : "DEAKTIVERET")</dd>
+                            <dt>&nbsp;</dt>
+                            <dd></dd>
+                            <dt>VTiger:</dt>
+                            <dd></dd>
+                            <dt>URL</dt>
+                            <dd style ="word-wrap: break-word;">@Model.CustomerSet.VTigerUrl</ddstyle>
+                            <dt>Brugernavn </dt>
+                            <dd>@Model.CustomerSet.VTigerUsername</dd>
+                            <dt>Adgangsnøgle</dt>
+                            <dd>@Model.CustomerSet.VTigerAccessKey</dd>
+                            <dt>Status</dt>
+                            <dd>@((bool) Model.CustomerSet.IsVTigerOK ? "AKTIVERET" : "DEAKTIVERET")</dd>
+                            <dt>&nbsp;</dt>
+                            <dd></dd>
+                            <dt>E-conomic:</dt>
+                            <dd></dd>
+                            <dt>Privat app-ID</dt>
+                            <dd style="word-wrap: break-word;">@Model.CustomerSet.EconomicPrivateAPI</dd>
+                            <dt>Adgangs-ID</dt>
+                            <dd style="word-wrap: break-word;">@Model.CustomerSet.EconomicPublicAPI</dd>
+                            <dt>Status</dt>
+                            <dd>@((bool) Model.CustomerSet.IsEconomicOK ? "AKTIVERET" : "DEAKTIVERET")</dd>
+                        </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

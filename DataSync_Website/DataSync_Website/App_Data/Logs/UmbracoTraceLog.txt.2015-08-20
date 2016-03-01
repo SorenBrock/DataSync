@@ -1,0 +1,29 @@
+﻿2015-08-20 03:23:17,361 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Determining hash of code files on disk
+2015-08-20 03:23:17,480 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Hash determined (took 116ms)
+2015-08-20 03:23:17,502 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2015-08-20 03:23:17,693 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 37 (took 190ms)
+2015-08-20 03:23:18,619 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2015-08-20 03:23:18,620 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 0ms)
+2015-08-20 03:23:18,620 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+2015-08-20 03:23:18,622 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 16 (took 1ms)
+2015-08-20 03:23:18,860 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2015-08-20 03:23:18,863 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 6 (took 3ms)
+2015-08-20 03:23:18,864 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2015-08-20 03:23:18,868 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 35 (took 4ms)
+2015-08-20 03:23:19,362 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2015-08-20 03:23:19,363 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 1ms)
+2015-08-20 03:23:19,364 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2015-08-20 03:23:19,365 [11] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 1ms)
+2015-08-20 03:23:25,176 [11] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Initializing Examine and binding to business logic events
+2015-08-20 03:23:26,425 [11] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Adding examine event handlers for index providers: 3
+2015-08-20 03:23:32,943 [11] INFO  Umbraco.Web.UmbracoModule - [Thread 8] Setting OriginalRequestUrl: local.opgave:80/umbraco
+2015-08-20 03:23:33,767 [11] INFO  umbraco.content - [Thread 8] Loading content from disk cache...
+2015-08-20 03:23:34,589 [11] INFO  Umbraco.Core.PluginManager - [Thread 8] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2015-08-20 03:23:34,592 [11] INFO  Umbraco.Core.PluginManager - [Thread 8] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 23 (took 2ms)
+2015-08-20 03:23:38,285 [11] INFO  Umbraco.Core.PluginManager - [Thread 8] Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+2015-08-20 03:23:38,288 [11] INFO  Umbraco.Core.PluginManager - [Thread 8] Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 44 (took 3ms)
+2015-08-20 03:24:39,959 [11] INFO  umbraco.BusinessLogic.Log - [Thread 13] Log scrubbed.  Removed all items older than 2015-06-21 03:24:39
+2015-08-20 07:36:49,225 [11] INFO  umbraco.BusinessLogic.Log - [Thread 176] Log scrubbed.  Removed all items older than 2015-06-21 07:36:49
+2015-08-20 11:36:49,230 [11] INFO  umbraco.BusinessLogic.Log - [Thread 173] Log scrubbed.  Removed all items older than 2015-06-21 11:36:49
+2015-08-20 15:36:49,235 [11] INFO  umbraco.BusinessLogic.Log - [Thread 159] Log scrubbed.  Removed all items older than 2015-06-21 15:36:49
+2015-08-20 19:36:49,247 [11] INFO  umbraco.BusinessLogic.Log - [Thread 146] Log scrubbed.  Removed all items older than 2015-06-21 19:36:49

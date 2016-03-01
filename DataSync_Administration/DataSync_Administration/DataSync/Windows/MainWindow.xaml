@@ -1,0 +1,78 @@
+﻿<Window x:Class="DataSync.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Administration" Height="602.963" Width="609" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+            <GroupBox HorizontalAlignment="Left" Header="Kunder" Width="593">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="ButtonRefreshCustomer" Content="Refresh" Width="50" Height="20" Margin="0,2,5,2" Click="ButtonRefreshCustomer_Click"  />
+                        <Button Name="ButtonSearchCustomer" Content="Søg" Width="50" Height="20" Margin="0,2,5,2" Click="ButtonSearchCustomer_Click"  />
+                        <TextBox Name="TextBoxSearchCustomer" Height="20" Width="470" >
+
+                        </TextBox>
+                    </StackPanel>
+                    <ScrollViewer BorderThickness="2" HorizontalScrollBarVisibility="Disabled" Width="581" VerticalScrollBarVisibility="Visible" Height="140" HorizontalAlignment="Stretch" Margin="0,0,0,0">
+                        <DataGrid Name="DataGridCustomer" ItemsSource="{Binding}" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" CanUserResizeColumns="True" AlternatingRowBackground="WhiteSmoke" SelectionChanged="DataGridCustomer_SelectionChanged" MouseDoubleClick="ButtonCustomerEdit_Click" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding CusID}" Width="30" IsReadOnly="True" Header="ID" />
+                                <DataGridTextColumn Binding="{Binding CusName}"  Width="350" IsReadOnly="True" Header="Navn" />
+                                <DataGridTextColumn Binding="{Binding CusDateLastUpdated}"  Width="120" IsReadOnly="True" Header="Seneste Update" />
+                                <DataGridTextColumn Binding="{Binding CusIsActive}" Width="1*" IsReadOnly="True" Header="Active" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                    <Grid Height="25" HorizontalAlignment="Right">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Name="ButtonCustomerNew" Content="Ny" Grid.Column="0" Grid.Row="0"  IsEnabled="True" Click="ButtonCustomerNew_Click"/>
+                        <Button Name="ButtonCustomerEdit" Content="Ret" Grid.Column="1" Grid.Row="0" IsEnabled="False" HorizontalAlignment="Left" Width="60" Height="25" VerticalAlignment="Top" Click="ButtonCustomerEdit_Click"/>
+                        <Button Name="ButtonCustomerDelete" Content="Slet" Grid.Column="2" Grid.Row="0" Height="25" VerticalAlignment="Top" IsEnabled="False" Click="ButtonCustomerDelete_Click"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox HorizontalAlignment="Left" Header="Log" Width="593">
+                <StackPanel >
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="ButtonRefreshLog" Content="LogAll" Width="50" Height="20" Margin="0,2,5,2" Click="ButtonRefreshLog_Click"  />
+                        <Button Name="ButtonSearchLog" Content="Søg" Width="50" Height="20" Margin="0,2,5,2" Click="ButtonSearchLog_Click"  />
+                        <TextBox Name="TextBoxSearchLog" Height="20" Width="470"/>
+                    </StackPanel>
+                    <ScrollViewer BorderThickness="2" HorizontalScrollBarVisibility="Disabled" Width="581" VerticalScrollBarVisibility="Visible" Height="276" HorizontalAlignment="Left">
+                        <DataGrid Name="DataGridLog" ItemsSource="{Binding}" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" CanUserResizeColumns="True" AlternatingRowBackground="WhiteSmoke"  Margin="0,0,0,0" SelectionChanged="DataGridLog_SelectionChanged" MouseDoubleClick="DataGridLog_MouseDoubleClick">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding LogDateCreated}" Width="100" Header="Dato" />
+                                <DataGridTextColumn Binding="{Binding LogCustomerName}" Width="180" Header="Kunde">
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="ToolTip" Value="{Binding LogToolTip}" />
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding LogName}" Width="*" Header="LogNavn" >
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="ToolTip" Value="{Binding LogToolTip}" />
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                    <Grid Height="25" HorizontalAlignment="Right">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Name="ButtonLogClear" Content="Ryd" Grid.Column="0" Grid.Row="0" IsEnabled="False" HorizontalAlignment="Left" Width="60" Click="ButtonLogClear_Click"/>
+                        <Button Name="ButtonLogDelete" Content="Slet" Grid.Column="1" Grid.Row="0" Height="25" IsEnabled="False" Click="ButtonLogDelete_Click"  />
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </DockPanel>
+</Window>

@@ -1,0 +1,18 @@
+﻿2015-06-07 06:12:49,934 [10] INFO  umbraco.content - [Thread 61] Loading content from disk cache...
+2015-06-07 06:12:50,952 [10] INFO  Umbraco.Core.PluginManager - [Thread 61] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2015-06-07 06:12:50,956 [10] INFO  Umbraco.Core.PluginManager - [Thread 61] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 23 (took 3ms)
+2015-06-07 06:12:55,304 [10] INFO  Umbraco.Core.PluginManager - [Thread 61] Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+2015-06-07 06:12:55,308 [10] INFO  Umbraco.Core.PluginManager - [Thread 61] Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 44 (took 3ms)
+2015-06-07 06:15:07,413 [10] INFO  Umbraco.Web.Security.WebSecurity - [Thread 67] User Id: 0 logged in
+2015-06-07 06:15:08,166 [10] INFO  Umbraco.Core.PluginManager - [Thread 68] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-06-07 06:15:08,167 [10] INFO  Umbraco.Core.PluginManager - [Thread 68] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 1ms)
+2015-06-07 06:15:08,431 [10] INFO  Umbraco.Core.PluginManager - [Thread 71] Starting resolution types of umbraco.interfaces.IApplication
+2015-06-07 06:15:08,437 [10] INFO  Umbraco.Core.PluginManager - [Thread 71] Completed resolution of types of umbraco.interfaces.IApplication, found 7 (took 6ms)
+2015-06-07 06:15:08,782 [10] INFO  Umbraco.Core.PluginManager - [Thread 67] Starting resolution types of umbraco.interfaces.ITree
+2015-06-07 06:15:08,793 [10] INFO  Umbraco.Core.PluginManager - [Thread 67] Completed resolution of types of umbraco.interfaces.ITree, found 35 (took 2ms)
+2015-06-07 06:15:08,840 [10] INFO  Umbraco.Core.PluginManager - [Thread 67] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-06-07 06:15:08,841 [10] INFO  Umbraco.Core.PluginManager - [Thread 67] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-06-07 06:15:08,856 [10] INFO  Umbraco.Core.PluginManager - [Thread 67] Starting resolution types of umbraco.interfaces.ITree
+2015-06-07 06:15:08,857 [10] INFO  Umbraco.Core.PluginManager - [Thread 67] Completed resolution of types of umbraco.interfaces.ITree, found 19 (took 1ms)
+2015-06-07 14:16:13,021 [10] INFO  umbraco.BusinessLogic.Log - [Thread 131] Log scrubbed.  Removed all items older than 2015-04-08 14:16:13
+2015-06-07 18:40:01,652 [10] INFO  umbraco.BusinessLogic.Log - [Thread 89] Log scrubbed.  Removed all items older than 2015-04-08 18:40:01

@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+}
+<div class="container">
+    <h2>@Umbraco.Field("pagetitle")&nbsp;</h2>
+    <div class="well">
+        <div class="row">
+            <div class="col-md-12">
+                @Umbraco.Field("bodytext")<br/>
+                @Html.Action("UserLogin", "LoginSurface")
+            </div>
+        </div>
+    </div>
+</div>

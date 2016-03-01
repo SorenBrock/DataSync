@@ -1,0 +1,31 @@
+﻿@inherits UmbracoViewPage<DataSync_Website.Models.UserViewModel>
+@{
+    Layout = "Master.cshtml";
+}
+<div class="container">
+    <h2>@Umbraco.Field("pagetitle")</h2>
+    <div class="well">
+        <div class="row">
+            <div class="col-md-12">
+                @Umbraco.Field("bodytext")
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>@Umbraco.Field("Guide1Headline")</h2>
+            <p>@Umbraco.Field("Guide1BodyText")</p>
+            <p><a type="button" href="/Account" class="btn btn-default">Konto</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>@Umbraco.Field("Guide2Headline")</h2>
+            <p>@Umbraco.Field("Guide2BodyText")</p>
+            <p><a type="button" href="/Inbox" class="btn btn-default">Inbox</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>@Umbraco.Field("Guide3Headline")</h2>
+            <p>@Umbraco.Field("Guide3BodyText")</p>
+            <p><a type="button" href="@Url.Action("UserLogout", "LoginSurface")" class="btn btn-default">Log af</a></p>
+        </div>
+    </div>
+</div>

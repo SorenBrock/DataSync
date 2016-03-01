@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelADO.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelADOStoreContainer">
+    <EntitySet Name="CustomerSet" EntityType="ModelADO.Store.CustomerSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LogSet" EntityType="ModelADO.Store.LogSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WebSiteInboxSet" EntityType="ModelADO.Store.WebSiteInboxSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CustomerLog" Association="ModelADO.Store.CustomerLog">
+      <End Role="Customer" EntitySet="CustomerSet" />
+      <End Role="Log" EntitySet="LogSet" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerWebSiteInbox" Association="ModelADO.Store.CustomerWebSiteInbox">
+      <End Role="Customer" EntitySet="CustomerSet" />
+      <End Role="WebSiteInbox" EntitySet="WebSiteInboxSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CustomerSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="WebLogin" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="WebPassword" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="VTigerUsername" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="VTigerUrl" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="VTigerAccessKey" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsVTigerOK" Type="bit" Nullable="true" />
+    <Property Name="EconomicPublicAPI" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="EconomicPrivateAPI" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsEconomicOK" Type="bit" Nullable="true" />
+    <Property Name="DateCreated" Type="datetime" Nullable="true" />
+    <Property Name="DateLastUpdated" Type="datetime" Nullable="true" />
+    <Property Name="IsActive" Type="bit" Nullable="true" />
+    <Property Name="ForceNewProduct" Type="bit" Nullable="true" />
+    <Property Name="ForceNewDebtor" Type="bit" Nullable="true" />
+    <Property Name="IsWriteToLogFile" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Info" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsError" Type="bit" Nullable="true" />
+    <Property Name="DateCreated" Type="datetime" Nullable="true" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WebSiteInboxSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="From" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateIsRead" Type="datetime" Nullable="true" />
+    <Property Name="IsRead" Type="bit" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CustomerLog">
+    <End Role="Customer" Type="ModelADO.Store.CustomerSet" Multiplicity="1" />
+    <End Role="Log" Type="ModelADO.Store.LogSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerWebSiteInbox">
+    <End Role="Customer" Type="ModelADO.Store.CustomerSet" Multiplicity="1" />
+    <End Role="WebSiteInbox" Type="ModelADO.Store.WebSiteInboxSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WebSiteInbox">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelADO" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelADOContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerSet" EntityType="ModelADO.Customer" />
+          <EntitySet Name="LogSet" EntityType="ModelADO.Log" />
+          <AssociationSet Name="CustomerLog" Association="ModelADO.CustomerLog">
+            <End Role="Customer" EntitySet="CustomerSet" />
+            <End Role="Log" EntitySet="LogSet" />
+          </AssociationSet>
+          <EntitySet Name="WebSiteInboxSet" EntityType="ModelADO.WebSiteInbox" />
+          <AssociationSet Name="CustomerWebSiteInbox" Association="ModelADO.CustomerWebSiteInbox">
+            <End Role="Customer" EntitySet="CustomerSet" />
+            <End Role="WebSiteInbox" EntitySet="WebSiteInboxSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="true" />
+          <Property Name="WebLogin" Type="String" Nullable="true" />
+          <Property Name="WebPassword" Type="String" Nullable="true" />
+          <Property Name="VTigerUsername" Type="String" Nullable="true" />
+          <Property Name="VTigerUrl" Type="String" Nullable="true" />
+          <Property Name="VTigerAccessKey" Type="String" Nullable="true" />
+          <Property Name="IsVTigerOK" Type="Boolean" Nullable="true" />
+          <Property Name="EconomicPublicAPI" Type="String" Nullable="true" />
+          <Property Name="EconomicPrivateAPI" Type="String" Nullable="true" />
+          <Property Name="IsEconomicOK" Type="Boolean" Nullable="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="true" />
+          <Property Name="DateLastUpdated" Type="DateTime" Nullable="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="true" />
+          <Property Name="ForceNewProduct" Type="Boolean" Nullable="true" />
+          <Property Name="ForceNewDebtor" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="Log" Relationship="ModelADO.CustomerLog" FromRole="Customer" ToRole="Log" />
+          <Property Name="IsWriteToLogFile" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="WebSiteInbox" Relationship="ModelADO.CustomerWebSiteInbox" FromRole="Customer" ToRole="WebSiteInbox" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="true" />
+          <Property Name="Info" Type="String" Nullable="true" />
+          <Property Name="IsError" Type="Boolean" Nullable="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="Customer" Relationship="ModelADO.CustomerLog" FromRole="Log" ToRole="Customer" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="CustomerLog">
+          <End Type="ModelADO.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="ModelADO.Log" Role="Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WebSiteInbox">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="From" Type="String" Nullable="true" />
+          <Property Name="Subject" Type="String" Nullable="false" />
+          <Property Name="Message" Type="String" Nullable="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="DateIsRead" Type="DateTime" Nullable="true" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="ModelADO.CustomerWebSiteInbox" FromRole="WebSiteInbox" ToRole="Customer" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="CustomerWebSiteInbox">
+          <End Type="ModelADO.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="ModelADO.WebSiteInbox" Role="WebSiteInbox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebSiteInbox">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelADOStoreContainer" CdmEntityContainer="ModelADOContainer">
+    <EntitySetMapping Name="CustomerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelADO.Customer)">
+        <MappingFragment StoreEntitySet="CustomerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="WebLogin" ColumnName="WebLogin" />
+          <ScalarProperty Name="WebPassword" ColumnName="WebPassword" />
+          <ScalarProperty Name="VTigerUsername" ColumnName="VTigerUsername" />
+          <ScalarProperty Name="VTigerUrl" ColumnName="VTigerUrl" />
+          <ScalarProperty Name="VTigerAccessKey" ColumnName="VTigerAccessKey" />
+          <ScalarProperty Name="IsVTigerOK" ColumnName="IsVTigerOK" />
+          <ScalarProperty Name="EconomicPublicAPI" ColumnName="EconomicPublicAPI" />
+          <ScalarProperty Name="EconomicPrivateAPI" ColumnName="EconomicPrivateAPI" />
+          <ScalarProperty Name="IsEconomicOK" ColumnName="IsEconomicOK" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ForceNewProduct" ColumnName="ForceNewProduct" />
+          <ScalarProperty Name="ForceNewDebtor" ColumnName="ForceNewDebtor" />
+          <ScalarProperty Name="IsWriteToLogFile" ColumnName="IsWriteToLogFile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelADO.Log)">
+        <MappingFragment StoreEntitySet="LogSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+          <ScalarProperty Name="IsError" ColumnName="IsError" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebSiteInboxSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelADO.WebSiteInbox)">
+        <MappingFragment StoreEntitySet="WebSiteInboxSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateIsRead" ColumnName="DateIsRead" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

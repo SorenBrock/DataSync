@@ -1,0 +1,64 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    Layout = null;
+}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="da">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DataSync</title>
+    <link href="/content/bootstrap.css" rel="stylesheet">
+    <link href="/css/site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="HeadLinetext">&nbsp;[image] DataSync</div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Contact">Kontakt</a></li>
+                    <li><a href="/About">Om DataSync</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="/Welcome">Velkommen</a></li>
+                        <li><a href="/Account">Konto</a></li>
+                        <li><a href="/Inbox">Inbox(@Html.Action("WebsiteInboxMessageCount", "InboxSurface"))</a></li>
+                        <li>@Html.ActionLink("Log af", "UserLogout", "LoginSurface")</li>
+                    }
+                    else
+                    {
+                        <li><a href="/Login">Log på</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10 container body-content">
+            @RenderBody()
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+    <script src="/scripts/jquery-2.1.3.min.js"></script>
+    <script src="/scripts/jquery.validate.js"></script>
+    <script src="/scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="/scripts/bootstrap.min.js"></script>
+</body>
+</html>

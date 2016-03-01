@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataSyncDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CustomerSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="WebLogin" Type="nvarchar(max)" />
+          <Property Name="WebPassword" Type="nvarchar(max)" />
+          <Property Name="VTigerUsername" Type="nvarchar(max)" />
+          <Property Name="VTigerUrl" Type="nvarchar(max)" />
+          <Property Name="VTigerAccessKey" Type="nvarchar(max)" />
+          <Property Name="IsVTigerOK" Type="bit" />
+          <Property Name="EconomicPublicAPI" Type="nvarchar(max)" />
+          <Property Name="EconomicPrivateAPI" Type="nvarchar(max)" />
+          <Property Name="IsEconomicOK" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateLastUpdated" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ForceNewProduct" Type="bit" />
+          <Property Name="ForceNewDebtor" Type="bit" />
+          <Property Name="IsWriteToLogFile" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Info" Type="nvarchar(max)" />
+          <Property Name="IsError" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebSiteInboxSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="From" Type="nvarchar(max)" />
+          <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateIsRead" Type="datetime" />
+          <Property Name="IsRead" Type="bit" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CustomerLog">
+          <End Role="CustomerSet" Type="Self.CustomerSet" Multiplicity="1" />
+          <End Role="LogSet" Type="Self.LogSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogSet">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerWebSiteInbox">
+          <End Role="CustomerSet" Type="Self.CustomerSet" Multiplicity="1" />
+          <End Role="WebSiteInboxSet" Type="Self.WebSiteInboxSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebSiteInboxSet">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataSyncDBModelStoreContainer">
+          <EntitySet Name="CustomerSet" EntityType="Self.CustomerSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogSet" EntityType="Self.LogSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebSiteInboxSet" EntityType="Self.WebSiteInboxSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CustomerLog" Association="Self.FK_CustomerLog">
+            <End Role="CustomerSet" EntitySet="CustomerSet" />
+            <End Role="LogSet" EntitySet="LogSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerWebSiteInbox" Association="Self.FK_CustomerWebSiteInbox">
+            <End Role="CustomerSet" EntitySet="CustomerSet" />
+            <End Role="WebSiteInboxSet" EntitySet="WebSiteInboxSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DataSyncDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CustomerSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebLogin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VTigerUsername" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VTigerUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VTigerAccessKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsVTigerOK" Type="Boolean" />
+          <Property Name="EconomicPublicAPI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EconomicPrivateAPI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsEconomicOK" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateLastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ForceNewProduct" Type="Boolean" />
+          <Property Name="ForceNewDebtor" Type="Boolean" />
+          <NavigationProperty Name="LogSet" Relationship="Self.FK_CustomerLog" FromRole="CustomerSet" ToRole="LogSet" />
+          <Property Name="IsWriteToLogFile" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="WebSiteInboxSet" Relationship="DataSyncDBModel.FK_CustomerWebSiteInbox" FromRole="CustomerSet" ToRole="WebSiteInboxSet" />
+        </EntityType>
+        <EntityType Name="LogSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsError" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CustomerSet" Relationship="Self.FK_CustomerLog" FromRole="LogSet" ToRole="CustomerSet" />
+        </EntityType>
+        <Association Name="FK_CustomerLog">
+          <End Role="CustomerSet" Type="Self.CustomerSet" Multiplicity="1" />
+          <End Role="LogSet" Type="Self.LogSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogSet">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataSyncDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerSet" EntityType="Self.CustomerSet" />
+          <EntitySet Name="LogSet" EntityType="Self.LogSet" />
+          <AssociationSet Name="FK_CustomerLog" Association="Self.FK_CustomerLog">
+            <End Role="CustomerSet" EntitySet="CustomerSet" />
+            <End Role="LogSet" EntitySet="LogSet" />
+          </AssociationSet>
+          <EntitySet Name="WebSiteInboxSet" EntityType="DataSyncDBModel.WebSiteInboxSet" />
+          <AssociationSet Name="FK_CustomerWebSiteInbox" Association="DataSyncDBModel.FK_CustomerWebSiteInbox">
+            <End Role="CustomerSet" EntitySet="CustomerSet" />
+            <End Role="WebSiteInboxSet" EntitySet="WebSiteInboxSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="WebSiteInboxSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="From" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateIsRead" Type="DateTime" Precision="3" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CustomerSet" Relationship="DataSyncDBModel.FK_CustomerWebSiteInbox" FromRole="WebSiteInboxSet" ToRole="CustomerSet" />
+        </EntityType>
+        <Association Name="FK_CustomerWebSiteInbox">
+          <End Type="DataSyncDBModel.CustomerSet" Role="CustomerSet" Multiplicity="1" />
+          <End Type="DataSyncDBModel.WebSiteInboxSet" Role="WebSiteInboxSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebSiteInboxSet">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DataSyncDBModelStoreContainer" CdmEntityContainer="DataSyncDBEntities">
+          <EntitySetMapping Name="CustomerSet">
+            <EntityTypeMapping TypeName="DataSyncDBModel.CustomerSet">
+              <MappingFragment StoreEntitySet="CustomerSet">
+                <ScalarProperty Name="IsWriteToLogFile" ColumnName="IsWriteToLogFile" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="WebLogin" ColumnName="WebLogin" />
+                <ScalarProperty Name="WebPassword" ColumnName="WebPassword" />
+                <ScalarProperty Name="VTigerUsername" ColumnName="VTigerUsername" />
+                <ScalarProperty Name="VTigerUrl" ColumnName="VTigerUrl" />
+                <ScalarProperty Name="VTigerAccessKey" ColumnName="VTigerAccessKey" />
+                <ScalarProperty Name="IsVTigerOK" ColumnName="IsVTigerOK" />
+                <ScalarProperty Name="EconomicPublicAPI" ColumnName="EconomicPublicAPI" />
+                <ScalarProperty Name="EconomicPrivateAPI" ColumnName="EconomicPrivateAPI" />
+                <ScalarProperty Name="IsEconomicOK" ColumnName="IsEconomicOK" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ForceNewProduct" ColumnName="ForceNewProduct" />
+                <ScalarProperty Name="ForceNewDebtor" ColumnName="ForceNewDebtor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogSet">
+            <EntityTypeMapping TypeName="DataSyncDBModel.LogSet">
+              <MappingFragment StoreEntitySet="LogSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="IsError" ColumnName="IsError" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebSiteInboxSet">
+            <EntityTypeMapping TypeName="DataSyncDBModel.WebSiteInboxSet">
+              <MappingFragment StoreEntitySet="WebSiteInboxSet">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="DateIsRead" ColumnName="DateIsRead" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,20 @@
+﻿2015-09-14 09:15:30,281 [10] INFO  umbraco.BusinessLogic.Log - [Thread 125] Log scrubbed.  Removed all items older than 2015-07-16 09:15:30
+2015-09-14 11:01:19,372 [10] INFO  Umbraco.Web.Security.WebSecurity - [Thread 118] User Id: 0 logged in
+2015-09-14 11:01:20,005 [10] INFO  Umbraco.Core.PluginManager - [Thread 115] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-09-14 11:01:20,153 [10] INFO  Umbraco.Core.PluginManager - [Thread 115] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 153ms)
+2015-09-14 11:01:20,460 [10] INFO  Umbraco.Core.PluginManager - [Thread 117] Starting resolution types of umbraco.interfaces.IApplication
+2015-09-14 11:01:20,498 [10] INFO  Umbraco.Core.PluginManager - [Thread 117] Completed resolution of types of umbraco.interfaces.IApplication, found 7 (took 37ms)
+2015-09-14 11:01:20,894 [10] INFO  Umbraco.Core.PluginManager - [Thread 115] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-09-14 11:01:20,894 [10] INFO  Umbraco.Core.PluginManager - [Thread 115] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-09-14 11:01:20,897 [10] INFO  Umbraco.Core.PluginManager - [Thread 115] Starting resolution types of umbraco.interfaces.ITree
+2015-09-14 11:01:20,909 [10] INFO  Umbraco.Core.PluginManager - [Thread 115] Completed resolution of types of umbraco.interfaces.ITree, found 19 (took 12ms)
+2015-09-14 11:01:21,138 [10] INFO  Umbraco.Core.PluginManager - [Thread 127] Starting resolution types of umbraco.interfaces.ITree
+2015-09-14 11:01:21,161 [10] INFO  Umbraco.Core.PluginManager - [Thread 127] Completed resolution of types of umbraco.interfaces.ITree, found 35 (took 13ms)
+2015-09-14 11:01:32,542 [10] INFO  Umbraco.Core.PluginManager - [Thread 120] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-09-14 11:01:32,543 [10] INFO  Umbraco.Core.PluginManager - [Thread 120] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-09-14 11:01:33,548 [10] INFO  Umbraco.Core.PluginManager - [Thread 127] Starting resolution types of umbraco.interfaces.ICacheRefresher
+2015-09-14 11:01:33,569 [10] INFO  Umbraco.Core.PluginManager - [Thread 127] Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 20 (took 20ms)
+2015-09-14 11:01:35,028 [10] INFO  Umbraco.Core.PluginManager - [Thread 120] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-09-14 11:01:35,029 [10] INFO  Umbraco.Core.PluginManager - [Thread 120] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-09-14 14:29:57,479 [10] INFO  umbraco.BusinessLogic.Log - [Thread 121] Log scrubbed.  Removed all items older than 2015-07-16 14:29:57
+2015-09-14 20:23:34,353 [10] INFO  umbraco.BusinessLogic.Log - [Thread 28] Log scrubbed.  Removed all items older than 2015-07-16 20:23:34
