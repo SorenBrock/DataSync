@@ -10,9 +10,13 @@ DataSync er et automatiseret system, der kobler VTiger og E-conomic sammen, så 
 Programmel:
 DataSync er et autonomt system, som bliver understøttet af en administration og et webside for kunderne, som alle benytter den samme database. Applikationerne er uafhængige af hinanden og kan  erstattes med andre teknologier, hvis det på et senere tidspunkt skulle vise at være nødvendigt. Det er  udviklet tre selvstændige Visual Studio projekter. 
 Visual Studio projekter:
+
 •	DataSync_Administration	(Administration)
+
 •	DataSync_Engine	(Engine)
+
 •	DataSync_Website	(Website)
+
 Det kan ikke undgås, at der opstår duplikat kode i Administration og Engine, men det samlede system er designet således, da et uafhængighedskravet mellem modulerne er vægtet tungere end duplikering. Der er selvfølgelig taget højde for dette i programkoden. Website er helt kildekode-uafhængig af Administration og Website, da den udelukkende henter via deres fælles database. 
 
 DataSync er lavet i programmeringssproget i C#/.Net på Visual Studio platformen. Integration til E-conomic foregår via .Net API, og Umbraco endvidere er udviklet i Visual Studio. VTiger-strategien er uafhængigt af programmeringssprog, da tilgangen til denne foregår via et REST API - POST, GET etc. metoder. Databaserne er MsSQL.
